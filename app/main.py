@@ -28,14 +28,13 @@ client.upsert(
 
 results = client.search(
     collection_name="my_collection",
-    query_vector=[0.1, 0.2, 0.3],
-    top=3,
+    query_vector=[0.1, 0.2, 0.3]
 )
 
 
 @app.get('/')
 def home():
-    return results
+    return results, 'hi'
 
 @app.get('/about')
 def about():
