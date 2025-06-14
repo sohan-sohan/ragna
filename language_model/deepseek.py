@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def get_openrouter_response(prompt, model="deepseek/deepseek-chat:free", temperature=0.85, max_tokens=120):
+def get_openrouter_response(prompt,context: str = "", model="deepseek/deepseek-chat:free", temperature=0.85, max_tokens=120): #need to add coontec maybe
+    prompt = f"{context}\nQuery: {prompt}"
     api_key = os.getenv("OPENROUTER_API_KEY")
     url = "https://openrouter.ai/api/v1/chat/completions"    #issue: why set this up every api call? can i not take it ouf of this function?
     headers = {
@@ -28,3 +29,4 @@ def get_openrouter_response(prompt, model="deepseek/deepseek-chat:free", tempera
     else:
         return f"Error: {response.status_code} - {response.text}"
 
+print(get_openrouter_response("What is the capital of France?"))
