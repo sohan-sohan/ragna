@@ -1,0 +1,20 @@
+hi sohan and pulakith
+
+if u want to get your own api key, just follow the below instructions
+
+go to openrouter . ai, get free deepseek r1 or V3 (free) api key
+
+create .env in the same directory
+
+OPENROUTER_API_KEY= "sk-XXXXXXXXXXXXXXXX"
+
+CAUTION: Make sure you sepcify the free model name, or else it charges 
+
+#Code is in language_model/deepseek.py
+
+#to use it from root directory:
+from language_model.deepseek import get_openrouter_response
+print(get_openrouter_response("tell me about naruto", temperature=0.5))
+
+
+
