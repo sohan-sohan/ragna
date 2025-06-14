@@ -1,7 +1,5 @@
+env/
+*.pyc
 /__pycache__/
 .env
-
-
-llm_module/.env
-
 
