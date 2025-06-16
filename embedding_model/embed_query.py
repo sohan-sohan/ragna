@@ -9,19 +9,12 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 
 
 def query_embedding(query: str) -> np.ndarray:
-    """
-    Converts a user query into a dense vector.
-    """
+
     return model.encode(query)
 
 
 def document_embedding(file_path: str) -> Tuple[np.ndarray, List[str]]:
-    """
-    Extracts text from a file, splits into chunks, and returns embeddings.
-    
-    Returns:
-        Tuple[np.ndarray, List[str]]: Embedding vectors and their corresponding text chunks.
-    """
+ 
     path = Path(file_path)
 
     if not path.exists():
@@ -29,7 +22,7 @@ def document_embedding(file_path: str) -> Tuple[np.ndarray, List[str]]:
 
     ext = path.suffix.lower()
 
-    # Read file content
+
     if ext == ".txt":
         with open(file_path, "r", encoding="utf-8") as f:
             text = f.read()
@@ -50,7 +43,7 @@ def document_embedding(file_path: str) -> Tuple[np.ndarray, List[str]]:
     else:
         raise ValueError(f"Unsupported file type: {ext}")
 
-    # Split into chunks
+    # very simple chunking, basicc
     def split_text(text: str, chunk_size: int = 200, overlap: int = 50) -> List[str]:
         words = text.split()
         chunks = []
