@@ -1,0 +1,8 @@
+#
+libraries used:
+
+pathlib
+
+pypdf2
+
+python-docx 
